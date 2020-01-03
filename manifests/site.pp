@@ -2,8 +2,11 @@ node default{
 
 }
 
-node 'master.puppet.vm' 
-{
+node 'minetest.puppet.vm'{
+ include role::minecraft_server
+}
+
+node 'master.puppet.vm' {
 include role::master_server
 file {'/root/README':
  ensure => file,
@@ -11,6 +14,7 @@ file {'/root/README':
  owner => 'root',
  }
 }
+
 node /^web/ {
  include role::app_server
 }
